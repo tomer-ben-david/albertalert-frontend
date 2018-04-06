@@ -9,10 +9,6 @@ const defaultState: Alert = {
   symbol: 'GOOGL', email: 'tomerbd1@gmail.com'
 };
 
-const newState = (state, newData) => {
-  return Object.assign({}, state, newData);
-};
-
 declare module '@ngrx/store' {
   interface Action {
     type: string;
@@ -25,10 +21,7 @@ export function alertReducer(state: Alert = defaultState, action: Action) {
 
   switch (action.type) {
     case AlertActions.ADD_ALERT:
-      console.log('AlertActions.ADD_ALERT');
-      const theNewState = newState(state, { symbol: action.payload });
-      console.log('theNewState: ' + JSON.stringify(theNewState));
-      return theNewState;
+      return { ...state, symbol: action.payload };
 
     default:
       return state;
