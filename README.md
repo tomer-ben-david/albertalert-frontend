@@ -1,9 +1,9 @@
 # Albert alert
 
-# Adding material design
+# Resources
 
-https://appdividend.com/2018/01/18/angular-5-material-tutorial-scratch/
-
+[Angular Effects](https://www.youtube.com/watch?v=13nWhUndQo4)
+[Angular Firebase](https://www.youtube.com/watch?v=-GjF9pSeFTs)
 https://material.angular.io/guide/getting-started
 
 # ngrx/store

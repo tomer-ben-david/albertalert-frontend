@@ -5,8 +5,19 @@ import { MaterialAppModule } from './ngmaterial.module';
 import { StoreModule } from '@ngrx/store';
 
 import { alertReducer } from './alert.reducer';
+import {AlertEffects} from './alert.effects';
 
 import { AppComponent } from './app.component';
+
+import { StoreDevtoolsModule} from '@ngrx/store-devtools';
+
+import { EffectsModule } from '@ngrx/effects';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireModule} from 'angularfire2';
+
+import { environment } from '../environments/environment';
+
+export const firebaseConfig = environment.firebaseConfig;
 
 
 @NgModule({
@@ -15,9 +26,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MaterialAppModule,
+
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+
     StoreModule.forRoot({
       alert: alertReducer }
-      )
+      ),
+    EffectsModule.forRoot(([AlertEffects])),
+    StoreDevtoolsModule.instrument({ maxAge: 10 })
   ],
   providers: [],
   bootstrap: [AppComponent]
