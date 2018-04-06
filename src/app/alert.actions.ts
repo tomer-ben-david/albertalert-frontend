@@ -9,7 +9,7 @@ export const REMOVE_ALERT = '[Remove] Remove Alert';
 export class AddAlert implements Action {
   readonly type = ADD_ALERT;
 
-  constructor(public payload: string) {} // can be any object payload now string.
+  constructor(public payload: Alert) {} // can be any object payload now string.
 }
 
 export class AddAlertSuccess implements Action {

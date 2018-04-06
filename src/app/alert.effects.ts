@@ -9,17 +9,27 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 
+export const DB_ALERTS_PATH = 'alerts/';
+
 export type Action = alertActions.ALL;
 
 @Injectable()
 export class AlertEffects {
   constructor(private actions: Actions, private db: AngularFirestore) {}
 
-  @Effect() addAlert: Observable<Action> = this.actions.ofType(alertActions.ADD_ALERT)
-    .map((action: alertActions.AddAlert) => action.payload )
-    .mergeMap(payload => of(this.db.collection('alerts/' )
-      .add( { alerts: payload
-      })))
-    .map(() => new alertActions.AddAlertSuccess())
-    .catch(err => of (new alertActions.AddAlertFail( { error: err} )));
+  @Effect() addAlert(): Observable<Action> {
+    const myjson = { key1: 'value1', key2: 'value2' };
+
+    return this.actions.ofType(alertActions.ADD_ALERT)
+      .map((action: alertActions.AddAlert) => {
+        console.log('ActionToAdd: ' + JSON.stringify(action.payload));
+        return action.payload;
+      })
+      .mergeMap(payload => {
+        return of(this.db.collection(DB_ALERTS_PATH).add(payload.getData()));
+      }
+      )
+      .map(() => new alertActions.AddAlertSuccess())
+      .catch(err => of(new alertActions.AddAlertFail({error: err})));
+  }
 }

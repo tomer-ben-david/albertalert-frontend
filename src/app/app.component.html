@@ -7,8 +7,9 @@
     <h2>Symbol: {{ p.symbol }}, Email: {{ p.email }}</h2>
   </div>
 
-   <input type="text" #symbol>
-  <button mat-flat-button (click)="addAlert(symbol.value)">Add Alert</button>
+   <input type="text" #symbol matInput placeholder="Symbol" value="GOOGL" >
+  <input type="email" #email matInput placeholder="Email" value="GOOGL" >
+  <button mat-flat-button (click)="addAlert(symbol.value, email.value)">Add Alert</button>
 
 
 

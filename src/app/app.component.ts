@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Alert } from './alert.model';
+import { Alert, DefaultAlert } from './alert.model';
 import * as AlertActions from './alert.actions';
 import {ADD_ALERT, AddAlert} from './alert.actions';
 
@@ -27,8 +27,8 @@ export class AppComponent {
     this.alert = this.store.select('alert');
   }
 
-  addAlert(symbol: string) {
+  addAlert(symbol: string, email: string) {
     console.log('addAlert: ' + symbol);
-    this.store.dispatch(new AddAlert(symbol));
+    this.store.dispatch(new AddAlert(new DefaultAlert(symbol, email)));
   }
 }
