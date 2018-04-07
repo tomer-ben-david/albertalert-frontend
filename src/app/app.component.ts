@@ -27,8 +27,8 @@ export class AppComponent {
     this.alert = this.store.select('alert');
   }
 
-  addAlert(symbol: string, email: string) {
+  addAlert(symbol: string, email: string, price: number) {
     console.log('addAlert: ' + symbol);
-    this.store.dispatch(new AddAlert(new DefaultAlert(symbol, email)));
+    this.store.dispatch(new AddAlert(new DefaultAlert(symbol, email, price)));
   }
 }

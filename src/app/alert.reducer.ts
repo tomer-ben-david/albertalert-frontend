@@ -1,13 +1,11 @@
 import { Action } from '@ngrx/store';
 import * as AlertActions from './alert.actions';
 
-import { Alert } from './alert.model';
+import {Alert, DefaultAlert} from './alert.model';
 
 export type Action = AlertActions.ALL;
 
-const defaultState: Alert = {
-  symbol: 'GOOGL', email: 'tomerbd1@gmail.com'
-};
+const defaultState: Alert = new DefaultAlert('GOOGL', 'defaultemail@gmail.com', 0.0);
 
 declare module '@ngrx/store' {
   interface Action {

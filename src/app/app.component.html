@@ -7,9 +7,12 @@
     <h2>Symbol: {{ p.symbol }}, Email: {{ p.email }}</h2>
   </div>
 
-   <input type="text" #symbol matInput placeholder="Symbol" value="GOOGL" >
-  <input type="email" #email matInput placeholder="Email" value="GOOGL" >
-  <button mat-flat-button (click)="addAlert(symbol.value, email.value)">Add Alert</button>
+  <div class="example-container">
+    <mat-form-field><input #symbol matInput placeholder="Symbol"></mat-form-field>
+    <mat-form-field><input #email matInput placeholder="Email"></mat-form-field>
+    <mat-form-field><input #price matInput placeholder="Price"></mat-form-field>
+    <button mat-flat-button (click)="addAlert(symbol.value, email.value, price.value)">Add Alert</button>
+  </div>
 
 
 

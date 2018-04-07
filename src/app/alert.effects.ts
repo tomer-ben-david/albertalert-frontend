@@ -18,8 +18,6 @@ export class AlertEffects {
   constructor(private actions: Actions, private db: AngularFirestore) {}
 
   @Effect() addAlert(): Observable<Action> {
-    const myjson = { key1: 'value1', key2: 'value2' };
-
     return this.actions.ofType(alertActions.ADD_ALERT)
       .map((action: alertActions.AddAlert) => {
         console.log('ActionToAdd: ' + JSON.stringify(action.payload));
